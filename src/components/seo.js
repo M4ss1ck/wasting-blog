@@ -1,6 +1,6 @@
-import React from 'react'
-import { graphql, useStaticQuery } from 'gatsby'
-import { Helmet } from 'react-helmet'
+import React from "react";
+import { graphql, useStaticQuery } from "gatsby";
+import { Helmet } from "react-helmet";
 
 function SEO({ title, seo }) {
   const {
@@ -15,17 +15,17 @@ function SEO({ title, seo }) {
         }
       }
     }
-  `)
+  `);
 
-  const defaultTitle = siteMetadata.title
+  const defaultTitle = siteMetadata.title;
 
-  const pageDescription = seo?.description || siteMetadata.description
-  const pageKeywords = seo?.keywords || siteMetadata.keywords
-  const pageTitle = seo?.title || title || 'Home'
+  const pageDescription = seo?.description || siteMetadata.description;
+  const pageKeywords = seo?.keywords || siteMetadata.keywords;
+  const pageTitle = seo?.title || title || "Página Principal";
 
   return (
     <Helmet
-      htmlAttributes={{ lang: 'en' }}
+      htmlAttributes={{ lang: "es" }}
       defaultTitle={defaultTitle}
       titleTemplate={`%s | ${defaultTitle}`}
     >
@@ -40,12 +40,12 @@ function SEO({ title, seo }) {
       {seo?.image && <meta property="og:image" content={seo.image.url} />}
       <meta name="og:type" content="website" />
 
-      <meta name="twitter:site" content="@GraphCMS" />
+      <meta name="twitter:site" content="WastingBlog" />
       <meta name="twitter:title" content={`${pageTitle} | ${defaultTitle}`} />
       <meta name="twitter:card" content="summary_large_image" />
       {seo?.image && <meta name="twitter:image:src" content={seo.image.url} />}
     </Helmet>
-  )
+  );
 }
 
-export default SEO
+export default SEO;

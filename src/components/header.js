@@ -1,16 +1,15 @@
-import React, { useEffect, useState } from 'react'
-import { graphql, Link, useStaticQuery } from 'gatsby'
-import { globalHistory, useLocation } from '@reach/router'
-import cx from 'classnames'
+import React, { useEffect, useState } from "react";
+import { graphql, Link, useStaticQuery } from "gatsby";
+import { globalHistory, useLocation } from "@reach/router";
+import Img from "gatsby-image";
+import cx from "classnames";
 
-import GraphCMSLogo from '../svg/logo.svg'
-import GraphCMSMark from '../svg/mark.svg'
-import Transition from './transition'
+import Transition from "./transition";
 
 function Header() {
-  const [mobileNavOpen, setMobileNavOpen] = useState(false)
-  const location = useLocation()
-  const { pages } = useStaticQuery(graphql`
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const location = useLocation();
+  const { pages, logo1, logo2 } = useStaticQuery(graphql`
     {
       pages: allGraphCmsPage {
         nodes {
@@ -19,28 +18,53 @@ function Header() {
           title
         }
       }
+      logo1: file(relativePath: { eq: "logo3.jpg" }) {
+        childImageSharp {
+          fluid(fit: FILL, cropFocus: NORTH) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      logo2: file(relativePath: { eq: "logo2.jpg" }) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
     }
-  `)
+  `);
 
   useEffect(
     () =>
       globalHistory.listen(({ action }) => {
-        if (action === 'PUSH') setMobileNavOpen(false)
+        if (action === "PUSH") setMobileNavOpen(false);
       }),
     [setMobileNavOpen]
-  )
+  );
 
-  const toggleMobileNavOpen = () => setMobileNavOpen((open) => !open)
+  const toggleMobileNavOpen = () => setMobileNavOpen((open) => !open);
 
   return (
     <header className="py-10 relative">
-      <nav className="relative flex items-center justify-between sm:h-10 lg:justify-start">
-        <div className="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
-          <div className="flex items-center justify-between w-full md:w-auto">
-            <Link to="/" aria-label="GraphCMS Gatsby Blog Starter">
-              <GraphCMSLogo className="hidden sm:block h-10" />
-              <GraphCMSMark className="h-10 sm:hidden" />
-            </Link>
+      <nav className="relative flex items-center justify-between sm:h-16 lg:justify-start">
+        <div className="flex items-center flex-grow flex-shrink-0 ">
+          <div className="flex items-center justify-between w-full ">
+            <div class="w-custom">
+              <Link to="/" aria-label="Wasting Time Blog">
+                <Img
+                  fluid={logo1.childImageSharp.fluid}
+                  alt="logo"
+                  className="hidden sm:block h-10"
+                />
+                <Img
+                  fluid={logo2.childImageSharp.fluid}
+                  alt="logo"
+                  className="h-10 sm:hidden"
+                />
+                {/* <span className="text-lg">Wasting Time Blog</span> */}
+              </Link>
+            </div>
             <div className="-mr-2 flex items-center md:hidden">
               <button
                 onClick={() => toggleMobileNavOpen()}
@@ -69,23 +93,25 @@ function Header() {
         </div>
         <div className="hidden md:flex md:ml-10 md:pr-4 space-x-8">
           {pages.nodes.map((page) => {
-            const isActive = location.pathname.startsWith(`/${page.slug}`)
+            const isActive = location.pathname.startsWith(`/${page.slug}`);
 
             return (
               <Link
                 key={page.id}
                 to={`/${page.slug}`}
                 className={cx(
-                  'inline-flex items-center px-1 pt-1 border-b-2 text-lg font-medium leading-5 focus:outline-none transition duration-150 ease-in-out',
+                  "inline-flex items-center px-1 pt-1 border-b-2 text-lg font-medium leading-5 focus:outline-none transition duration-150 ease-in-out",
                   {
-                    'border-purple-500 text-gray-900 focus:border-purple-600': isActive,
-                    'border-transparent text-gray-500 hover:text-gray-600 hover:border-gray-300 focus:text-gray-600 focus:border-grey-600': !isActive,
+                    "border-purple-500 text-gray-900 focus:border-purple-600":
+                      isActive,
+                    "border-transparent text-gray-500 hover:text-gray-600 hover:border-gray-300 focus:text-gray-600 focus:border-grey-600":
+                      !isActive,
                   }
                 )}
               >
                 {page.title}
               </Link>
-            )
+            );
           })}
         </div>
       </nav>
@@ -107,8 +133,12 @@ function Header() {
               aria-labelledby="main-menu"
             >
               <div className="px-2 pt-8 flex items-center justify-between">
-                <div>
-                  <GraphCMSMark className="h-10" />
+                <div className="w-custom">
+                  <Img
+                    fluid={logo1.childImageSharp.fluid}
+                    alt="logo"
+                    className="h-10"
+                  />
                 </div>
                 <div className="-mr-2">
                   <button
@@ -135,24 +165,28 @@ function Header() {
               </div>
               <div className="mt-1 px-2 pt-2 pb-3 space-y-1">
                 {pages.nodes.map((page) => {
-                  const isActive = location.pathname.startsWith(`/${page.slug}`)
+                  const isActive = location.pathname.startsWith(
+                    `/${page.slug}`
+                  );
 
                   return (
                     <Link
                       key={page.id}
                       to={`/${page.slug}`}
                       className={cx(
-                        'block pl-3 pr-4 py-2 border-l-4 font-medium focus:outline-none transition duration-150 ease-in-out',
+                        "block pl-3 pr-4 py-2 border-l-4 font-medium focus:outline-none transition duration-150 ease-in-out",
                         {
-                          'border-purple-500 text-purple-500 bg-purple-50 focus:text-purple-600 focus:bg-purple-100 focus:border-purple-600': isActive,
-                          'border-transparent text-gray-500 hover:text-gray-600 hover:bg-gray-50 hover:border-gray-300 focus:text-gray-600 focus:bg-gray-50 focus:border-gray-300': !isActive,
+                          "border-purple-500 text-purple-500 bg-purple-50 focus:text-purple-600 focus:bg-purple-100 focus:border-purple-600":
+                            isActive,
+                          "border-transparent text-gray-500 hover:text-gray-600 hover:bg-gray-50 hover:border-gray-300 focus:text-gray-600 focus:bg-gray-50 focus:border-gray-300":
+                            !isActive,
                         }
                       )}
                       role="menuitem"
                     >
                       {page.title}
                     </Link>
-                  )
+                  );
                 })}
               </div>
             </div>
@@ -160,7 +194,7 @@ function Header() {
         </div>
       </Transition>
     </header>
-  )
+  );
 }
 
-export default Header
+export default Header;

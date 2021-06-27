@@ -1,27 +1,27 @@
-require('dotenv').config()
+require("dotenv").config();
 
 module.exports = {
   siteMetadata: {
-    title: 'GraphCMS Blog',
-    description:
-      'Gatsby blog starter for GraphCMS! Powered by `gatsby-source-graphcms`, featuring `gatsby-image` and MDX!',
-    keywords: 'Headless CMS, GraphCMS, GraphQL CMS, Gatsby',
+    title: "Wasting Blog",
+    description: "Ahora también perdemos el tiempo en este blog",
+    keywords: "Telegram, Gatsby",
   },
   plugins: [
-    'gatsby-plugin-mdx',
+    "gatsby-plugin-mdx",
     {
-      resolve: 'gatsby-plugin-react-svg',
-      ptions: {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
         rule: {
           include: /svg/,
         },
       },
     },
-    'gatsby-plugin-react-helmet',
-    'gatsby-plugin-sharp',
-    'gatsby-plugin-postcss',
+    "gatsby-plugin-react-helmet",
+
+    "gatsby-plugin-postcss",
+
     {
-      resolve: 'gatsby-source-graphcms',
+      resolve: "gatsby-source-graphcms",
       options: {
         endpoint: process.env.GRAPHCMS_ENDPOINT,
         token: process.env.GRAPHCMS_TOKEN,
@@ -29,6 +29,14 @@ module.exports = {
         downloadLocalImages: true,
       },
     },
-    'gatsby-transformer-sharp',
+    "gatsby-transformer-sharp",
+    "gatsby-plugin-sharp",
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images/`,
+      },
+    },
   ],
-}
+};
