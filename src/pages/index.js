@@ -82,7 +82,7 @@ function IndexPage({ data: { allGraphCmsPost, allGraphCmsNew } }) {
                       <div className="space-y-6">
                         <h2 className="text-2xl leading-8 font-bold tracking-tight">
                           <Link
-                            to={`/posts/${noticia.slug}`}
+                            to={`/noticias/${noticia.slug}`}
                             className="text-gray-900"
                           >
                             {noticia.title}
@@ -96,7 +96,7 @@ function IndexPage({ data: { allGraphCmsPost, allGraphCmsNew } }) {
                       </div>
                       <div className="text-base leading-6 font-medium">
                         <Link
-                          to={`/posts/${noticia.slug}`}
+                          to={`/noticias/${noticia.slug}`}
                           className="text-purple-500 hover:text-purple-600"
                           aria-label={`Read "${noticia.title}"`}
                         >

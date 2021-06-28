@@ -43,14 +43,20 @@ function NewTemplate({
                   />
                 )}
                 <dl className="flex-1 text-sm font-medium leading-5">
-                  <dt className="sr-only">Nombre</dt>
-                  <dd className="text-gray-900">{page.author.name}</dd>
-                  {page.author.title && (
-                    <React.Fragment>
-                      <dt className="sr-only">Título</dt>
-                      <dd className="text-gray-500">{page.author.title}</dd>
-                    </React.Fragment>
-                  )}
+                  {page.authors.forEach((autor) => {
+                    return (
+                      <>
+                        <dt className="sr-only">Nombre</dt>
+                        <dd className="text-gray-900">{autor.name}</dd>
+                        {autor.title && (
+                          <React.Fragment>
+                            <dt className="sr-only">Título</dt>
+                            <dd className="text-gray-500">{autor.title}</dd>
+                          </React.Fragment>
+                        )}
+                      </>
+                    );
+                  })}
                 </dl>
               </li>
             </ul>

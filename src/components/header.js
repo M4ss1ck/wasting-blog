@@ -50,7 +50,7 @@ function Header() {
       <nav className="relative flex items-center justify-between sm:h-16 lg:justify-start">
         <div className="flex items-center flex-grow flex-shrink-0 ">
           <div className="flex items-center justify-between w-full ">
-            <div class="w-custom">
+            <div className="w-custom">
               <Link to="/" aria-label="Wasting Time Blog">
                 <Img
                   fluid={logo1.childImageSharp.fluid}
