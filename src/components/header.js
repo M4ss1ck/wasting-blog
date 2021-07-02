@@ -9,7 +9,7 @@ import Transition from "./transition";
 function Header() {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const location = useLocation();
-  const { pages, logo1, logo2 } = useStaticQuery(graphql`
+  const { pages, logo3, logo2, logo1 } = useStaticQuery(graphql`
     {
       pages: allGraphCmsPage {
         nodes {
@@ -18,7 +18,7 @@ function Header() {
           title
         }
       }
-      logo1: file(relativePath: { eq: "logo3.jpg" }) {
+      logo3: file(relativePath: { eq: "logo3.jpg" }) {
         childImageSharp {
           fluid(fit: FILL, cropFocus: NORTH) {
             ...GatsbyImageSharpFluid
@@ -26,6 +26,13 @@ function Header() {
         }
       }
       logo2: file(relativePath: { eq: "logo2.jpg" }) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      logo1: file(relativePath: { eq: "logo1.jpg" }) {
         childImageSharp {
           fluid {
             ...GatsbyImageSharpFluid
@@ -48,30 +55,39 @@ function Header() {
   return (
     <header className="py-10 relative">
       <nav className="relative flex items-center justify-between sm:h-16 lg:justify-start">
-        <div className="flex items-center flex-grow flex-shrink-0 ">
-          <div className="flex items-center justify-between w-full ">
-            <div className="w-custom mr-auto">
+        <div className="flex items-center flex-grow flex-shrink-0">
+          <div className="flex items-center justify-between w-full">
+            <div className="w-custom mr-auto" style={{ height: "10vh" }}>
               <Link to="/" aria-label="Wasting Time Blog">
-                <Img
-                  fluid={logo1.childImageSharp.fluid}
-                  alt="logo"
-                  className="hidden sm:block"
-                  style={{
-                    marginBottom: "1rem",
-                    minHeight: "8vh",
-                  }}
-                  imgStyle={{ objectFit: "contain" }}
-                />
-                <Img
-                  fluid={logo2.childImageSharp.fluid}
-                  alt="logo"
-                  className="h-10 sm:hidden"
-                  style={{
-                    marginBottom: "1rem",
-                    minHeight: "15vh",
-                  }}
-                  imgStyle={{ objectFit: "contain" }}
-                />
+                <div style={{ maxHeight: "100%" }} className="logoh">
+                  <Img
+                    fluid={logo3.childImageSharp.fluid}
+                    alt="logo"
+                    className="hidden sm:block"
+                    style={{
+                      maxHeight: "100%",
+                    }}
+                    imgStyle={{
+                      objectFit: "contain",
+                      objectPosition: "center left",
+                    }}
+                  />
+                </div>
+                <div style={{ maxHeight: "100%" }}>
+                  <Img
+                    fluid={logo1.childImageSharp.fluid}
+                    alt="logo"
+                    className="h-10 sm:hidden"
+                    style={{
+                      maxHeight: "100%",
+                    }}
+                    imgStyle={{
+                      objectFit: "contain",
+                      objectPosition: "center left",
+                    }}
+                  />
+                </div>
+
                 {/* <span className="text-lg">Wasting Time Blog</span> */}
               </Link>
             </div>
@@ -145,13 +161,15 @@ function Header() {
               <div className="px-2 pt-8 flex items-center justify-between">
                 <div className="w-custom">
                   <Img
-                    fluid={logo1.childImageSharp.fluid}
+                    fluid={logo2.childImageSharp.fluid}
                     alt="logo"
                     style={{
-                      marginBottom: "1rem",
-                      minHeight: "8vh",
+                      maxHeight: "10vh",
                     }}
-                    imgStyle={{ objectFit: "contain" }}
+                    imgStyle={{
+                      objectFit: "contain",
+                      objectPosition: "center left",
+                    }}
                   />
                 </div>
                 <div className="-mr-2">

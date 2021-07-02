@@ -4,21 +4,29 @@
 
 .w-custom {
   min-width: 50%;
-  height: auto;
+  height: 100%;
 }
 
 .wt-bg {
   background: url("../images/logo3.jpg") no-repeat center;
   background-position: left 0% top 0%;
+  background-size: contain;
   height: 60vh;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 768px) {
   .wt-bg {
-    background: url("../images/logo1.jpg") no-repeat center cover;
+    background: url("../images/logo1.jpg") no-repeat center;
+    background-size: cover;
+    background-attachment: fixed;
   }
 }
 
-/* nav {
-  min-height: 10vh;
-} */
+.logoh {
+  height: 0;
+}
+@media screen and (min-width: 640px) {
+  .logoh {
+    height: 10vh;
+  }
+}

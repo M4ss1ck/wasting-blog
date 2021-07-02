@@ -7,7 +7,7 @@ function IndexPage() {
       <div className="flex justify-center items-end wt-bg">
         <button
           type="button"
-          class="bg-gray-700 text-white px-1 sm:px-6 py-2 rounded font-light md:font-medium mx-3 hover:bg-gray-800 transition duration-200 each-in-out"
+          class="bg-gray-700 text-white px-1 sm:px-6 py-2 rounded font-medium my-3 mx-3 hover:bg-gray-800 transition duration-200 each-in-out"
         >
           <Link to="/blog">
             <h1 className="uppercase">Publicaciones</h1>
@@ -15,7 +15,7 @@ function IndexPage() {
         </button>
         <button
           type="button"
-          class="bg-gray-700 text-white px-1 sm:px-6 py-2 rounded font-light md:font-medium mx-3 hover:bg-gray-800 transition duration-200 each-in-out"
+          class="bg-gray-700 text-white px-1 sm:px-6 py-2 rounded font-medium my-3 mx-3 hover:bg-gray-800 transition duration-200 each-in-out"
         >
           <Link to="/noticias">
             <h1 className="uppercase">Noticias</h1>
