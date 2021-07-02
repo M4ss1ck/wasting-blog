@@ -6,3 +6,15 @@
   min-width: 50%;
   height: auto;
 }
+
+.wt-bg {
+  background: url("../images/logo3.jpg") no-repeat center;
+  background-position: left 0% top 0%;
+  height: 60vh;
+}
+
+@media screen and (max-width: 800px) {
+  .wt-bg {
+    background: url("../images/logo1.jpg") no-repeat center;
+  }
+}
