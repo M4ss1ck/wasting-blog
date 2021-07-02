@@ -15,6 +15,10 @@
 
 @media screen and (max-width: 800px) {
   .wt-bg {
-    background: url("../images/logo1.jpg") no-repeat center;
+    background: url("../images/logo1.jpg") no-repeat center cover;
   }
 }
+
+/* nav {
+  min-height: 10vh;
+} */

@@ -50,17 +50,27 @@ function Header() {
       <nav className="relative flex items-center justify-between sm:h-16 lg:justify-start">
         <div className="flex items-center flex-grow flex-shrink-0 ">
           <div className="flex items-center justify-between w-full ">
-            <div className="w-custom">
+            <div className="w-custom mr-auto">
               <Link to="/" aria-label="Wasting Time Blog">
                 <Img
                   fluid={logo1.childImageSharp.fluid}
                   alt="logo"
-                  className="hidden sm:block h-10"
+                  className="hidden sm:block"
+                  style={{
+                    marginBottom: "1rem",
+                    minHeight: "8vh",
+                  }}
+                  imgStyle={{ objectFit: "contain" }}
                 />
                 <Img
                   fluid={logo2.childImageSharp.fluid}
                   alt="logo"
                   className="h-10 sm:hidden"
+                  style={{
+                    marginBottom: "1rem",
+                    minHeight: "15vh",
+                  }}
+                  imgStyle={{ objectFit: "contain" }}
                 />
                 {/* <span className="text-lg">Wasting Time Blog</span> */}
               </Link>
@@ -137,7 +147,11 @@ function Header() {
                   <Img
                     fluid={logo1.childImageSharp.fluid}
                     alt="logo"
-                    className="h-10"
+                    style={{
+                      marginBottom: "1rem",
+                      minHeight: "8vh",
+                    }}
+                    imgStyle={{ objectFit: "contain" }}
                   />
                 </div>
                 <div className="-mr-2">
