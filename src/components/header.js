@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { graphql, Link, useStaticQuery } from "gatsby";
 import { globalHistory, useLocation } from "@reach/router";
-import Img from "gatsby-image";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { ThemeToggler } from "gatsby-plugin-dark-mode";
 import cx from "classnames";
 
 import Transition from "./transition";
@@ -20,23 +21,17 @@ function Header() {
       }
       logo3: file(relativePath: { eq: "logo3.jpg" }) {
         childImageSharp {
-          fluid(fit: FILL, cropFocus: NORTH) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData
         }
       }
       logo2: file(relativePath: { eq: "logo2.jpg" }) {
         childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData
         }
       }
       logo1: file(relativePath: { eq: "logo1.jpg" }) {
         childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData
         }
       }
     }
@@ -52,42 +47,48 @@ function Header() {
 
   const toggleMobileNavOpen = () => setMobileNavOpen((open) => !open);
 
+  const image3 = getImage(logo3);
+  const image2 = getImage(logo2);
+  const image1 = getImage(logo1);
+
   return (
-    <header className="py-10 relative">
-      <nav className="relative flex items-center justify-between sm:h-16 lg:justify-start">
+    <header className="w-full py-4 px-4 sticky top-0 z-30 bg-gradient-to-r from-white via-transparent to-white dark:from-black dark:via-gray-800 dark:to-black dark:text-white">
+      <nav className="relative flex items-center flex-wrap justify-between sm:h-16 lg:justify-center">
         <div className="flex items-center flex-grow flex-shrink-0">
           <div className="flex items-center justify-between w-full">
-            <div className="w-custom mr-auto" style={{ height: "10vh" }}>
+            <div
+              className="h-full justify-center align-middle"
+              //style={{ height: "10vh" }}
+            >
               <Link to="/" aria-label="Wasting Time Blog">
-                <div style={{ maxHeight: "100%" }} className="logoh">
-                  <Img
-                    fluid={logo3.childImageSharp.fluid}
+                <div className="h-16 logoh hidden sm:inline-flex items-center">
+                  <GatsbyImage
+                    image={image3}
                     alt="logo"
-                    className="hidden sm:block"
-                    style={{
-                      maxHeight: "100%",
-                    }}
-                    imgStyle={{
-                      objectFit: "contain",
-                      objectPosition: "center left",
-                    }}
+                    className="h-10 w-28"
+                    // style={{
+                    //   maxHeight: "100%",
+                    // }}
+                    // imgStyle={{
+                    //   objectFit: "contain",
+                    //   objectPosition: "center left",
+                    // }}
                   />
                 </div>
-                <div style={{ maxHeight: "100%" }}>
-                  <Img
-                    fluid={logo1.childImageSharp.fluid}
+                <div className="max-h-full inline-flex sm:hidden items-center">
+                  <GatsbyImage
+                    image={image1}
                     alt="logo"
-                    className="h-10 sm:hidden"
-                    style={{
-                      maxHeight: "100%",
-                    }}
-                    imgStyle={{
-                      objectFit: "contain",
-                      objectPosition: "center left",
-                    }}
+                    className="h-10 w-10"
+                    // style={{
+                    //   maxHeight: "100%",
+                    // }}
+                    // imgStyle={{
+                    //   objectFit: "contain",
+                    //   objectPosition: "center left",
+                    // }}
                   />
                 </div>
-
                 {/* <span className="text-lg">Wasting Time Blog</span> */}
               </Link>
             </div>
@@ -117,10 +118,10 @@ function Header() {
             </div>
           </div>
         </div>
+
         <div className="hidden md:flex md:ml-10 md:pr-4 space-x-8">
           {pages.nodes.map((page) => {
             const isActive = location.pathname.startsWith(`/${page.slug}`);
-
             return (
               <Link
                 key={page.id}
@@ -140,6 +141,21 @@ function Header() {
             );
           })}
         </div>
+        <ThemeToggler>
+          {({ theme, toggleTheme }) => (
+            <div className="dark-button mx-4">
+              <input
+                type="checkbox"
+                id="toggle"
+                onChange={(e) =>
+                  toggleTheme(e.target.checked ? "dark" : "light")
+                }
+                checked={theme === "dark"}
+              />
+              <label for="toggle" htmlFor="toggle"></label>
+            </div>
+          )}
+        </ThemeToggler>
       </nav>
       <Transition
         show={mobileNavOpen}
@@ -150,26 +166,27 @@ function Header() {
         leaveFrom="opacity-100 scale-100"
         leaveTo="opacity-0 scale-95"
       >
-        <div className="absolute top-0 inset-x-0 py-2 -mx-2 transition transform origin-top-right md:hidden">
+        <div className="absolute top-0 inset-x-0 py-2 -mx-2 transition transform origin-top-right md:hidden z-50 md:z-10">
           <div className="rounded-lg shadow-md">
             <div
-              className="rounded-lg bg-white shadow-xs overflow-hidden"
+              className="rounded-lg bg-white dark:bg-black shadow-xs overflow-hidden"
               role="menu"
               aria-orientation="vertical"
               aria-labelledby="main-menu"
             >
               <div className="px-2 pt-8 flex items-center justify-between">
                 <div className="w-custom">
-                  <Img
-                    fluid={logo2.childImageSharp.fluid}
+                  <GatsbyImage
+                    image={image2}
                     alt="logo"
-                    style={{
-                      maxHeight: "10vh",
-                    }}
-                    imgStyle={{
-                      objectFit: "contain",
-                      objectPosition: "center left",
-                    }}
+                    className="h-10 w-28"
+                    // style={{
+                    //   maxHeight: "10vh",
+                    // }}
+                    // imgStyle={{
+                    //   objectFit: "contain",
+                    //   objectPosition: "center left",
+                    // }}
                   />
                 </div>
                 <div className="-mr-2">
@@ -220,6 +237,10 @@ function Header() {
                     </Link>
                   );
                 })}
+                {/* <BotonModoOscuro
+                  enabled={theme === "dark"}
+                  setEnabled={() => setTheme(theme === "dark" ? "light" : "dark")}
+                /> */}
               </div>
             </div>
           </div>

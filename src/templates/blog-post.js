@@ -1,12 +1,22 @@
 import React from "react";
 import { graphql, Link } from "gatsby";
-import Img from "gatsby-image";
+//import Img from "gatsby-image";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { MDXRenderer } from "gatsby-plugin-mdx";
+//import { Disqus } from 'gatsby-plugin-disqus';
 
 function BlogPostTemplate({
   data: { authorImage, coverImage },
   pageContext: { nextPost, page, previousPost },
 }) {
+  // let disqusConfig = {
+  //   url: `${config.siteUrl+location.pathname}`,
+  //   identifier: post.id,
+  //   title: post.title,
+  // }
+  const avatar = getImage(authorImage.localFile);
+  const portada = getImage(coverImage.localFile);
+
   return (
     <article>
       <header className="pt-6 lg:pb-10">
@@ -36,10 +46,11 @@ function BlogPostTemplate({
             <ul className="flex justify-center lg:block space-x-8 sm:space-x-12 lg:space-x-0 lg:space-y-8">
               <li className="flex space-x-2">
                 {authorImage && (
-                  <Img
-                    fluid={authorImage.localFile.childImageSharp.fluid}
+                  <GatsbyImage
+                    fluid={avatar}
                     className="w-10 h-10 rounded-full"
                     fadeIn={false}
+                    alt="Avatar del autor"
                   />
                 )}
                 <dl className="flex-1 text-sm font-medium leading-5">
@@ -58,10 +69,11 @@ function BlogPostTemplate({
         </dl>
         <div className="divide-y divide-gray-200 lg:pb-0 lg:col-span-3 lg:row-span-2">
           {coverImage && (
-            <Img
-              fluid={coverImage.localFile.childImageSharp.fluid}
+            <GatsbyImage
+              image={portada}
               className="mb-8 rounded"
               fadeIn={false}
+              alt="Imagen de portada"
             />
           )}
           <div className="prose max-w-none pt-10 pb-8">
@@ -113,9 +125,7 @@ export const pageQuery = graphql`
     id
     localFile {
       childImageSharp {
-        fluid(maxWidth: 600) {
-          ...GatsbyImageSharpFluid
-        }
+        gatsbyImageData
       }
     }
   }

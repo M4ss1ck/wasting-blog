@@ -7,6 +7,8 @@ module.exports = {
     keywords: "Telegram, Gatsby",
   },
   plugins: [
+    "gatsby-plugin-pnpm",
+    "gatsby-plugin-dark-mode",
     "gatsby-plugin-mdx",
     {
       resolve: "gatsby-plugin-react-svg",
@@ -36,6 +38,12 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images/`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-disqus`,
+      options: {
+        shortname: process.env.GATSBY_DISQUS_NAME,
       },
     },
   ],

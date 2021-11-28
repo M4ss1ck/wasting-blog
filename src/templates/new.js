@@ -1,6 +1,6 @@
 import React from "react";
 import { graphql, Link } from "gatsby";
-import Img from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 
 function NewTemplate({
@@ -36,8 +36,10 @@ function NewTemplate({
             <ul className="flex justify-center lg:block space-x-8 sm:space-x-12 lg:space-x-0 lg:space-y-8">
               <li className="flex space-x-2">
                 {authorImage && (
-                  <Img
-                    fluid={authorImage.localFile.childImageSharp.fluid}
+                  <GatsbyImage
+                    image={
+                      authorImage.localFile.childImageSharp.gatsbyImageData
+                    }
                     className="w-10 h-10 rounded-full"
                     fadeIn={false}
                   />
@@ -64,8 +66,8 @@ function NewTemplate({
         </dl>
         <div className="divide-y divide-gray-200 lg:pb-0 lg:col-span-3 lg:row-span-2">
           {coverImage && (
-            <Img
-              fluid={coverImage.localFile.childImageSharp.fluid}
+            <GatsbyImage
+              image={coverImage.localFile.childImageSharp.gatsbyImageData}
               className="mb-8 rounded"
               fadeIn={false}
             />
@@ -117,29 +119,28 @@ function NewTemplate({
 }
 
 export const pageQuery = graphql`
-  fragment AssetFields on GraphCMS_Asset {
-    id
-    localFile {
-      childImageSharp {
-        fluid(maxWidth: 600) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-  }
-
   query NewQuery($id: String!) {
     authorImage: graphCmsAsset(
       authorAvatar: {
         elemMatch: { posts: { elemMatch: { id: { in: [$id] } } } }
       }
     ) {
-      ...AssetFields
+      id
+      localFile {
+        childImageSharp {
+          gatsbyImageData(width: 600, layout: CONSTRAINED)
+        }
+      }
     }
     coverImage: graphCmsAsset(
       coverImagePost: { elemMatch: { id: { eq: $id } } }
     ) {
-      ...AssetFields
+      id
+      localFile {
+        childImageSharp {
+          gatsbyImageData(width: 600, layout: CONSTRAINED)
+        }
+      }
     }
   }
 `;
