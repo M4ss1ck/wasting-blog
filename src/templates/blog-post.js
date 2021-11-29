@@ -30,7 +30,7 @@ function BlogPostTemplate({
             </div>
           </dl>
           <div>
-            <h1 className="text-3xl leading-9 font-extrabold text-gray-900 tracking-tight sm:text-4xl sm:leading-10 md:text-5xl md:leading-14">
+            <h1 className="text-3xl leading-9 font-extrabold text-gray-900 dark:text-gray-600 tracking-tight sm:text-4xl sm:leading-10 md:text-5xl md:leading-14">
               {page.title}
             </h1>
           </div>
@@ -47,7 +47,7 @@ function BlogPostTemplate({
               <li className="flex space-x-2">
                 {authorImage && (
                   <GatsbyImage
-                    fluid={avatar}
+                    image={avatar}
                     className="w-10 h-10 rounded-full"
                     fadeIn={false}
                     alt="Avatar del autor"
@@ -55,7 +55,9 @@ function BlogPostTemplate({
                 )}
                 <dl className="flex-1 text-sm font-medium leading-5">
                   <dt className="sr-only">Nombre</dt>
-                  <dd className="text-gray-900">{page.author.name}</dd>
+                  <dd className="text-gray-900 dark:text-gray-600">
+                    {page.author.name}
+                  </dd>
                   {page.author.title && (
                     <React.Fragment>
                       <dt className="sr-only">Título</dt>
@@ -76,7 +78,7 @@ function BlogPostTemplate({
               alt="Imagen de portada"
             />
           )}
-          <div className="prose max-w-none pt-10 pb-8">
+          <div className="prose dark:prose-dark max-w-none pt-10 pb-8">
             <MDXRenderer>{page.content.markdownNode.childMdx.body}</MDXRenderer>
           </div>
         </div>
@@ -88,7 +90,7 @@ function BlogPostTemplate({
                   <h2 className="text-xs tracking-wide uppercase text-gray-500">
                     Siguiente
                   </h2>
-                  <div className="text-purple-500 hover:text-purple-600">
+                  <div className="text-purple-400 hover:text-purple-700">
                     <Link to={`/posts/${nextPost.slug}`}>{nextPost.title}</Link>
                   </div>
                 </div>
@@ -98,7 +100,7 @@ function BlogPostTemplate({
                   <h2 className="text-xs tracking-wide uppercase text-gray-500">
                     Anterior
                   </h2>
-                  <div className="text-purple-500 hover:text-purple-600">
+                  <div className="text-purple-400 hover:text-purple-700">
                     <Link to={`/posts/${previousPost.slug}`}>
                       {previousPost.title}
                     </Link>
@@ -108,7 +110,7 @@ function BlogPostTemplate({
             </div>
           )}
           <div className="pt-8">
-            <Link to="/" className="text-purple-500 hover:text-purple-600">
+            <Link to="/" className="text-purple-400 hover:text-purple-700">
               &larr; Regresar{" "}
               <span style={{ textDecoration: "line-through" }}>al futuro</span>{" "}
               a la página principal
