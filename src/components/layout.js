@@ -11,7 +11,7 @@ function Layout({ children, barra, pageContext: { page } }) {
     <React.Fragment>
       <SEO {...page} />
       <div
-        className="flex flex-col min-h-screen dark:text-white dark:bg-black"
+        className="flex flex-col min-h-screen bg-gray-200 dark:text-white dark:bg-black"
         id="top"
       >
         <Header />

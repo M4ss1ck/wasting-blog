@@ -120,6 +120,34 @@ function Header() {
         </div>
 
         <div className="hidden md:flex md:ml-10 md:pr-4 space-x-8">
+          <Link
+            to={`/noticias`}
+            className={cx(
+              "inline-flex items-center px-1 pt-1 border-b-2 text-lg font-medium leading-5 focus:outline-none transition duration-150 ease-in-out",
+              {
+                "border-purple-500 text-gray-900 dark:text-purple-500 focus:border-purple-600":
+                  location.pathname.startsWith(`/noticias`),
+                "border-transparent text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 hover:border-gray-300 focus:text-gray-600 focus:border-grey-600":
+                  !location.pathname.startsWith(`/noticias`),
+              }
+            )}
+          >
+            Noticias
+          </Link>
+          <Link
+            to={`/blog`}
+            className={cx(
+              "inline-flex items-center px-1 pt-1 border-b-2 text-lg font-medium leading-5 focus:outline-none transition duration-150 ease-in-out",
+              {
+                "border-purple-500 text-gray-900 dark:text-purple-500 focus:border-purple-600":
+                  location.pathname.startsWith(`/blog`),
+                "border-transparent text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 hover:border-gray-300 focus:text-gray-600 focus:border-grey-600":
+                  !location.pathname.startsWith(`/blog`),
+              }
+            )}
+          >
+            Publicaciones
+          </Link>
           {pages.nodes.map((page) => {
             const isActive = location.pathname.startsWith(`/${page.slug}`);
             return (
@@ -129,9 +157,9 @@ function Header() {
                 className={cx(
                   "inline-flex items-center px-1 pt-1 border-b-2 text-lg font-medium leading-5 focus:outline-none transition duration-150 ease-in-out",
                   {
-                    "border-purple-500 text-gray-900 focus:border-purple-600":
+                    "border-purple-500 text-gray-900 dark:text-purple-500 focus:border-purple-600":
                       isActive,
-                    "border-transparent text-gray-500 hover:text-gray-600 hover:border-gray-300 focus:text-gray-600 focus:border-grey-600":
+                    "border-transparent text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 hover:border-gray-300 focus:text-gray-600 focus:border-grey-600":
                       !isActive,
                   }
                 )}

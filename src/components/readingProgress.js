@@ -34,7 +34,7 @@ const ReadingProgress = ({ target }) => {
 
   return (
     <div
-      className={`fixed h-2 top-0 bg-gray-800 z-40 mr-auto dark:bg-gray-400`}
+      className={`fixed h-2 top-0 bg-purple-800 z-40 mr-auto dark:bg-purple-600`}
       style={{ width: `${readingProgress}%` }}
     />
   );

@@ -20,7 +20,7 @@ function NewTemplate({
             </div>
           </dl>
           <div>
-            <h1 className="text-3xl leading-9 font-extrabold text-gray-900 tracking-tight sm:text-4xl sm:leading-10 md:text-5xl md:leading-14">
+            <h1 className="text-3xl leading-9 font-extrabold text-gray-900 dark:text-gray-600 tracking-tight sm:text-4xl sm:leading-10 md:text-5xl md:leading-14">
               {page.title}
             </h1>
           </div>
@@ -49,7 +49,9 @@ function NewTemplate({
                     return (
                       <>
                         <dt className="sr-only">Nombre</dt>
-                        <dd className="text-gray-900">{autor.name}</dd>
+                        <dd className="text-gray-900 dark:text-gray-600">
+                          {autor.name}
+                        </dd>
                         {autor.title && (
                           <React.Fragment>
                             <dt className="sr-only">Título</dt>
@@ -72,7 +74,7 @@ function NewTemplate({
               fadeIn={false}
             />
           )}
-          <div className="prose max-w-none pt-10 pb-8">
+          <div className="prose dark:prose-dark max-w-none pt-10 pb-8">
             <MDXRenderer>{page.content.markdownNode.childMdx.body}</MDXRenderer>
           </div>
         </div>
@@ -84,7 +86,7 @@ function NewTemplate({
                   <h2 className="text-xs tracking-wide uppercase text-gray-500">
                     Siguiente
                   </h2>
-                  <div className="text-purple-500 hover:text-purple-600">
+                  <div className="text-purple-400 hover:text-purple-700">
                     <Link to={`/noticias/${nextNew.slug}`}>
                       {nextNew.title}
                     </Link>
@@ -96,7 +98,7 @@ function NewTemplate({
                   <h2 className="text-xs tracking-wide uppercase text-gray-500">
                     Anterior
                   </h2>
-                  <div className="text-purple-500 hover:text-purple-600">
+                  <div className="text-purple-400 hover:text-purple-700">
                     <Link to={`/noticias/${previousNew.slug}`}>
                       {previousNew.title}
                     </Link>
@@ -106,7 +108,7 @@ function NewTemplate({
             </div>
           )}
           <div className="pt-8">
-            <Link to="/" className="text-purple-500 hover:text-purple-600">
+            <Link to="/" className="text-purple-400 hover:text-purple-700">
               &larr; Regresar{" "}
               <span style={{ textDecoration: "line-through" }}>al futuro</span>{" "}
               a la página principal

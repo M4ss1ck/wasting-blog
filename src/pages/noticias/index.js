@@ -29,7 +29,7 @@ function IndexPage({ data: { allGraphCmsNew } }) {
                         <h2 className="text-2xl leading-8 font-bold tracking-tight">
                           <Link
                             to={`/noticias/${noticia.slug}`}
-                            className="text-gray-900"
+                            className="text-gray-900 hover:text-purple-600"
                           >
                             {noticia.title}
                           </Link>

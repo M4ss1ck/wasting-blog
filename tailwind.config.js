@@ -10,7 +10,7 @@ module.exports = {
             css: {
               color: theme("colors.gray.300"),
               '[class~="lead"]': { color: theme("colors.gray.400") },
-              a: { color: theme("colors.gray.500") },
+              a: { color: theme("colors.gray.500"), textDecoration: "none" },
               strong: { color: theme("colors.gray.300") },
               "ul > li::before": { backgroundColor: theme("colors.gray.700") },
               hr: { borderColor: theme("colors.gray.800") },

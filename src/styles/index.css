@@ -9,7 +9,7 @@
 
 .wt-bg {
   background: url("../images/logo3.jpg") no-repeat center;
-  background-position: left 0% top 0%;
+  background-position: left 0% top 50%;
   background-size: contain;
   height: 60vh;
 }
