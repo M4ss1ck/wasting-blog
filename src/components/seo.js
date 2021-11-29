@@ -1,6 +1,7 @@
 import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import { Helmet } from "react-helmet";
+import favicon from "../images/favicon.ico";
 
 function SEO({ title, seo }) {
   const {
@@ -44,6 +45,8 @@ function SEO({ title, seo }) {
       <meta name="twitter:title" content={`${pageTitle} | ${defaultTitle}`} />
       <meta name="twitter:card" content="summary_large_image" />
       {seo?.image && <meta name="twitter:image:src" content={seo.image.url} />}
+
+      <link rel="icon" href={favicon} />
     </Helmet>
   );
 }
