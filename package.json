@@ -6,7 +6,8 @@
   "scripts": {
     "build": "gatsby build",
     "clean": "gatsby clean",
-    "dev": "gatsby develop"
+    "dev": "gatsby develop",
+    "serve": "gatsby serve -o"
   },
   "dependencies": {
     "@headlessui/react": "^1.4.2",
