@@ -204,18 +204,20 @@ function Header() {
             >
               <div className="px-2 pt-8 flex items-center justify-between">
                 <div className="w-custom">
-                  <GatsbyImage
-                    image={image2}
-                    alt="logo"
-                    className="h-10 w-28"
-                    // style={{
-                    //   maxHeight: "10vh",
-                    // }}
-                    // imgStyle={{
-                    //   objectFit: "contain",
-                    //   objectPosition: "center left",
-                    // }}
-                  />
+                  <Link to="/">
+                    <GatsbyImage
+                      image={image2}
+                      alt="logo"
+                      className="h-10 w-28"
+                      // style={{
+                      //   maxHeight: "10vh",
+                      // }}
+                      // imgStyle={{
+                      //   objectFit: "contain",
+                      //   objectPosition: "center left",
+                      // }}
+                    />
+                  </Link>
                 </div>
                 <div className="-mr-2">
                   <button
@@ -241,6 +243,36 @@ function Header() {
                 </div>
               </div>
               <div className="mt-1 px-2 pt-2 pb-3 space-y-1">
+                <Link
+                  to={`/noticias`}
+                  className={cx(
+                    "block pl-3 pr-4 py-2 border-l-4 font-medium focus:outline-none transition duration-150 ease-in-out",
+                    {
+                      "border-purple-500 text-gray-900 dark:text-purple-500 focus:border-purple-600":
+                        location.pathname.startsWith(`/noticias`),
+                      "border-transparent text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 hover:border-gray-300 focus:text-gray-600 focus:border-grey-600":
+                        !location.pathname.startsWith(`/noticias`),
+                    }
+                  )}
+                  role="menuitem"
+                >
+                  Noticias
+                </Link>
+                <Link
+                  to={`/blog`}
+                  className={cx(
+                    "block pl-3 pr-4 py-2 border-l-4 font-medium focus:outline-none transition duration-150 ease-in-out",
+                    {
+                      "border-purple-500 text-gray-900 dark:text-purple-500 focus:border-purple-600":
+                        location.pathname.startsWith(`/blog`),
+                      "border-transparent text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 hover:border-gray-300 focus:text-gray-600 focus:border-grey-600":
+                        !location.pathname.startsWith(`/blog`),
+                    }
+                  )}
+                  role="menuitem"
+                >
+                  Publicaciones
+                </Link>
                 {pages.nodes.map((page) => {
                   const isActive = location.pathname.startsWith(
                     `/${page.slug}`
@@ -253,9 +285,9 @@ function Header() {
                       className={cx(
                         "block pl-3 pr-4 py-2 border-l-4 font-medium focus:outline-none transition duration-150 ease-in-out",
                         {
-                          "border-purple-500 text-purple-500 bg-purple-50 focus:text-purple-600 focus:bg-purple-100 focus:border-purple-600":
+                          "border-purple-500 text-purple-500 bg-purple-50 dark:text-purple-500 focus:text-purple-600 focus:bg-purple-100 focus:border-purple-600":
                             isActive,
-                          "border-transparent text-gray-500 hover:text-gray-600 hover:bg-gray-50 hover:border-gray-300 focus:text-gray-600 focus:bg-gray-50 focus:border-gray-300":
+                          "border-transparent text-gray-500 hover:text-gray-600 hover:bg-gray-50 hover:border-gray-300 focus:text-gray-600 focus:bg-gray-50 dark:hover:text-gray-300 focus:border-gray-300":
                             !isActive,
                         }
                       )}
