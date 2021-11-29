@@ -4,6 +4,39 @@ module.exports = {
   purge: ["./src/**/*.js"],
   theme: {
     extend: {
+      typography(theme) {
+        return {
+          dark: {
+            css: {
+              color: theme("colors.gray.300"),
+              '[class~="lead"]': { color: theme("colors.gray.400") },
+              a: { color: theme("colors.gray.500") },
+              strong: { color: theme("colors.gray.300") },
+              "ul > li::before": { backgroundColor: theme("colors.gray.700") },
+              hr: { borderColor: theme("colors.gray.800") },
+              blockquote: {
+                color: theme("colors.gray.400"),
+                borderLeftColor: theme("colors.gray.200"),
+              },
+              h1: { color: theme("colors.gray.500") },
+              h2: { color: theme("colors.gray.500") },
+              h3: { color: theme("colors.gray.500") },
+              h4: { color: theme("colors.gray.500") },
+              code: { color: theme("colors.gray.500") },
+              "a code": { color: theme("colors.gray.500") },
+              pre: {
+                color: theme("colors.gray.400"),
+                backgroundColor: theme("colors.gray.800"),
+              },
+              thead: {
+                color: theme("colors.gray.500"),
+                borderBottomColor: theme("colors.gray.700"),
+              },
+              "tbody tr": { borderBottomColor: theme("colors.gray.800") },
+            },
+          },
+        };
+      },
       lineHeight: {
         11: "2.75rem",
         12: "3rem",
@@ -19,6 +52,7 @@ module.exports = {
   },
   variants: {
     extend: {
+      typography: ["dark"],
       display: ["responsive", "hover", "focus", "group-hover"],
       animation: ["hover"],
     },
