@@ -31,7 +31,7 @@ function BlogPage({ data: { allGraphCmsPost } }) {
                         <h2 className="text-2xl leading-8 font-bold tracking-tight">
                           <Link
                             to={`/posts/${post.slug}`}
-                            className="text-gray-900 hover:text-purple-600"
+                            className="text-gray-600 hover:text-purple-600"
                           >
                             {post.title}
                           </Link>
