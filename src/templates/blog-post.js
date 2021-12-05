@@ -69,7 +69,7 @@ function BlogPostTemplate({
             </ul>
           </dd>
         </dl>
-        <div className="divide-y divide-gray-200 lg:pb-0 lg:col-span-3 lg:row-span-2">
+        <div className="divide-y divide-gray-200 lg:pb-0 lg:col-span-3 lg:row-span-2 mx-4">
           {coverImage && (
             <GatsbyImage
               image={portada}

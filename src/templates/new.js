@@ -66,7 +66,7 @@ function NewTemplate({
             </ul>
           </dd>
         </dl>
-        <div className="divide-y divide-gray-200 lg:pb-0 lg:col-span-3 lg:row-span-2">
+        <div className="divide-y divide-gray-200 lg:pb-0 lg:col-span-3 lg:row-span-2 mx-4">
           {coverImage && (
             <GatsbyImage
               image={coverImage.localFile.childImageSharp.gatsbyImageData}
@@ -78,7 +78,7 @@ function NewTemplate({
             <MDXRenderer>{page.content.markdownNode.childMdx.body}</MDXRenderer>
           </div>
         </div>
-        <footer className="text-sm font-medium leading-5 divide-y divide-gray-200 lg:col-start-1 lg:row-start-2">
+        <footer className="text-sm font-medium leading-5 divide-y divide-gray-200 lg:col-start-1 lg:row-start-2 mx-2">
           {(nextNew || previousNew) && (
             <div className="space-y-8 py-8">
               {nextNew && (
