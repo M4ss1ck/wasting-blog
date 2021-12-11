@@ -66,45 +66,6 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
             }
           }
         }
-        news: allGraphCmsNew(sort: { fields: date, order: ASC }) {
-          edges {
-            nextNew: next {
-              slug
-              title
-            }
-            page: node {
-              id
-              authors {
-                id
-                name
-                title
-              }
-              content {
-                markdownNode {
-                  childMdx {
-                    body
-                  }
-                }
-              }
-              date: formattedDate
-              excerpt
-              seo {
-                description
-                image {
-                  url
-                }
-                keywords
-                title
-              }
-              slug
-              title
-            }
-            previousNew: previous {
-              slug
-              title
-            }
-          }
-        }
       }
     `
   );
@@ -124,19 +85,6 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
     });
   });
 
-  data.news.edges.forEach(({ nextNew, page, previousNew }) => {
-    createPage({
-      component: path.resolve("./src/templates/new.js"),
-      context: {
-        id: page.id,
-        page,
-        previousNew,
-        nextNew,
-      },
-      path: `/noticias/${page.slug}`,
-    });
-  });
-
   data.pages.nodes.forEach((page) => {
     createPage({
       component: path.resolve("./src/templates/default-page.js"),
@@ -151,21 +99,6 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
 exports.createResolvers = ({ createResolvers }) => {
   const resolvers = {
     GraphCMS_Post: {
-      formattedDate: {
-        type: "String",
-        resolve: (source) => {
-          const date = new Date(source.date);
-
-          return new Intl.DateTimeFormat("es-ES", {
-            weekday: "long",
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          }).format(date);
-        },
-      },
-    },
-    GraphCMS_New: {
       formattedDate: {
         type: "String",
         resolve: (source) => {
