@@ -5,6 +5,26 @@ fragment Author on Author {
   updatedAt
   publishedAt
   name
+  title
+  biography
+  createdBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+    }
+  }
+  updatedBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+    }
+  }
+  publishedBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+    }
+  }
   picture {
     ... on Asset {
       remoteTypeName: __typename
@@ -12,10 +32,20 @@ fragment Author on Author {
       locale
     }
   }
-  title
-  biography
   posts {
     ... on Post {
+      remoteTypeName: __typename
+      remoteId: id
+    }
+  }
+  news {
+    ... on New {
+      remoteTypeName: __typename
+      remoteId: id
+    }
+  }
+  scheduledIn {
+    ... on ScheduledOperation {
       remoteTypeName: __typename
       remoteId: id
     }

@@ -58,6 +58,7 @@ module.exports = {
     },
   },
   plugins: [require("@tailwindcss/typography"), require("@tailwindcss/ui")],
+  //plugins: [require("@tailwindcss/ui")],
   future: {
     removeDeprecatedGapUtilities: true,
     purgeLayersByDefault: true,

@@ -2,37 +2,12 @@ fragment New on New {
   stage
   remoteId: id
   createdAt
-  createdBy {
-    ... on User {
-      remoteTypeName: __typename
-      remoteId: id
-    }
-  }
   updatedAt
-  updatedBy {
-    ... on User {
-      remoteTypeName: __typename
-      remoteId: id
-    }
-  }
   publishedAt
-  publishedBy {
-    ... on User {
-      remoteTypeName: __typename
-      remoteId: id
-    }
-  }
   title
   slug
   date
   excerpt
-  coverImage {
-    ... on Asset {
-      remoteTypeName: __typename
-      remoteId: id
-      locale
-    }
-  }
   content {
     ... on RichText {
       raw
@@ -42,6 +17,31 @@ fragment New on New {
     }
   }
   tags
+  createdBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+    }
+  }
+  updatedBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+    }
+  }
+  publishedBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+    }
+  }
+  coverImage {
+    ... on Asset {
+      remoteTypeName: __typename
+      remoteId: id
+      locale
+    }
+  }
   authors {
     ... on Author {
       remoteTypeName: __typename
@@ -50,6 +50,12 @@ fragment New on New {
   }
   seo {
     ... on Seo {
+      remoteTypeName: __typename
+      remoteId: id
+    }
+  }
+  scheduledIn {
+    ... on ScheduledOperation {
       remoteTypeName: __typename
       remoteId: id
     }

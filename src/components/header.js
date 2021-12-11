@@ -52,8 +52,8 @@ function Header() {
   const image1 = getImage(logo1);
 
   return (
-    <header className="w-full py-4 px-4 sticky top-0 z-30 bg-gradient-to-r from-white via-transparent to-white dark:from-black dark:via-gray-800 dark:to-black dark:text-white">
-      <nav className="relative flex items-center flex-wrap justify-between sm:h-16 lg:justify-center">
+    <header className="w-full py-1 px-4 sticky top-0 z-30 bg-gradient-to-r from-white via-transparent to-white dark:from-black dark:via-gray-800 dark:to-black dark:text-white">
+      <nav className="relative flex items-center flex-wrap justify-between sm:h-14 lg:justify-center">
         <div className="flex items-center flex-grow flex-shrink-0">
           <div className="flex items-center justify-between w-full">
             <div
@@ -123,7 +123,7 @@ function Header() {
           <Link
             to={`/blog`}
             className={cx(
-              "inline-flex items-center px-1 pt-1 border-b-2 text-lg font-medium leading-5 focus:outline-none transition duration-150 ease-in-out",
+              "inline-flex items-center px-1 pt-1 pb-2 border-b-2 text-lg font-medium leading-5 focus:outline-none transition duration-150 ease-in-out",
               {
                 "border-purple-500 text-gray-900 dark:text-purple-500 focus:border-purple-600":
                   location.pathname.startsWith(`/blog`),
@@ -141,7 +141,7 @@ function Header() {
                 key={page.id}
                 to={`/${page.slug}`}
                 className={cx(
-                  "inline-flex items-center px-1 pt-1 border-b-2 text-lg font-medium leading-5 focus:outline-none transition duration-150 ease-in-out",
+                  "inline-flex items-center px-1 pt-1 pb-2 border-b-2 text-lg font-medium leading-5 focus:outline-none transition duration-150 ease-in-out",
                   {
                     "border-purple-500 text-gray-900 dark:text-purple-500 focus:border-purple-600":
                       isActive,
