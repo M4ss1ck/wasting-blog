@@ -1,5 +1,6 @@
 import React from "react";
 import { graphql, Link } from "gatsby";
+import readTime from "../../lib/readTime";
 
 function BlogPage({ data: { allGraphCmsPost } }) {
   return (
@@ -41,6 +42,10 @@ function BlogPage({ data: { allGraphCmsPost } }) {
                             {post.excerpt}
                           </div>
                         )}
+                        <p className="text-base leading-6 font-medium text-gray-500">
+                          {readTime(post.content.markdownNode.childMdx.body)}{" "}
+                          min de lectura
+                        </p>
                       </div>
                       <div className="text-base leading-6 font-medium">
                         <Link
@@ -72,6 +77,13 @@ export const indexPageQuery = graphql`
         excerpt
         slug
         title
+        content {
+          markdownNode {
+            childMdx {
+              body
+            }
+          }
+        }
       }
     }
   }

@@ -4,6 +4,7 @@ import { graphql, Link } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 //import { Disqus } from 'gatsby-plugin-disqus';
+import readTime from "../lib/readTime";
 
 function BlogPostTemplate({
   data: { authorImage, coverImage },
@@ -33,6 +34,9 @@ function BlogPostTemplate({
             <h1 className="text-3xl leading-9 font-extrabold text-gray-900 dark:text-gray-600 tracking-tight sm:text-4xl sm:leading-10 md:text-5xl md:leading-14">
               {page.title}
             </h1>
+            <p className="mt-2 text-base leading-6 text-gray-500 dark:text-gray-400">
+              {readTime(page.content.markdownNode.childMdx.body)} min
+            </p>
           </div>
         </div>
       </header>
@@ -82,7 +86,7 @@ function BlogPostTemplate({
             <MDXRenderer>{page.content.markdownNode.childMdx.body}</MDXRenderer>
           </div>
         </div>
-        <footer className="text-sm font-medium leading-5 divide-y divide-gray-200 lg:col-start-1 lg:row-start-2">
+        <aside className="text-sm font-medium leading-5 divide-y divide-gray-200 lg:col-start-1 lg:row-start-2">
           {(nextPost || previousPost) && (
             <div className="space-y-8 py-8">
               {nextPost && (
@@ -116,7 +120,7 @@ function BlogPostTemplate({
               a la página principal
             </Link>
           </div>
-        </footer>
+        </aside>
       </div>
     </article>
   );
