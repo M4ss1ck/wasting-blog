@@ -1,9 +1,16 @@
+const colors = require("tailwindcss/colors");
+
 module.exports = {
-  mode: "jit",
-  darkMode: "class", // or 'media' or 'class'
-  purge: ["./src/**/*.js"],
+  //mode: "jit",
+  darkMode: "class", // it's 'media' by default as of v3
+  content: ["./src/**/*.js"],
   theme: {
     extend: {
+      colors: {
+        green: colors.emerald,
+        yellow: colors.amber,
+        purple: colors.violet,
+      },
       typography(theme) {
         return {
           dark: {
@@ -50,14 +57,14 @@ module.exports = {
       },
     },
   },
-  variants: {
-    extend: {
-      typography: ["dark"],
-      display: ["responsive", "hover", "focus", "group-hover"],
-      animation: ["hover"],
-    },
-  },
-  plugins: [require("@tailwindcss/typography"), require("@tailwindcss/ui")],
+  // variants: {
+  //   extend: {
+  //     typography: ["dark"],
+  //     display: ["responsive", "hover", "focus", "group-hover"],
+  //     animation: ["hover"],
+  //   },
+  // },
+  plugins: [require("@tailwindcss/typography")],
   //plugins: [require("@tailwindcss/ui")],
   future: {
     removeDeprecatedGapUtilities: true,
