@@ -21,18 +21,21 @@ fragment Post on Post {
     ... on User {
       remoteTypeName: __typename
       remoteId: id
+      stage
     }
   }
   updatedBy {
     ... on User {
       remoteTypeName: __typename
       remoteId: id
+      stage
     }
   }
   publishedBy {
     ... on User {
       remoteTypeName: __typename
       remoteId: id
+      stage
     }
   }
   coverImage {
@@ -40,24 +43,28 @@ fragment Post on Post {
       remoteTypeName: __typename
       remoteId: id
       locale
+      stage
     }
   }
   author {
     ... on Author {
       remoteTypeName: __typename
       remoteId: id
+      stage
     }
   }
   scheduledIn {
     ... on ScheduledOperation {
       remoteTypeName: __typename
       remoteId: id
+      stage
     }
   }
   seo {
     ... on Seo {
       remoteTypeName: __typename
       remoteId: id
+      stage
     }
   }
 }

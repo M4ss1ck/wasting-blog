@@ -14,24 +14,28 @@ fragment ScheduledRelease on ScheduledRelease {
     ... on User {
       remoteTypeName: __typename
       remoteId: id
+      stage
     }
   }
   updatedBy {
     ... on User {
       remoteTypeName: __typename
       remoteId: id
+      stage
     }
   }
   publishedBy {
     ... on User {
       remoteTypeName: __typename
       remoteId: id
+      stage
     }
   }
   operations {
     ... on ScheduledOperation {
       remoteTypeName: __typename
       remoteId: id
+      stage
     }
   }
   status

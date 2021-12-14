@@ -11,18 +11,21 @@ fragment Seo on Seo {
     ... on User {
       remoteTypeName: __typename
       remoteId: id
+      stage
     }
   }
   updatedBy {
     ... on User {
       remoteTypeName: __typename
       remoteId: id
+      stage
     }
   }
   publishedBy {
     ... on User {
       remoteTypeName: __typename
       remoteId: id
+      stage
     }
   }
   image {
@@ -30,28 +33,33 @@ fragment Seo on Seo {
       remoteTypeName: __typename
       remoteId: id
       locale
+      stage
     }
   }
   news {
     ... on New {
       remoteTypeName: __typename
       remoteId: id
+      stage
     }
   }
   scheduledIn {
     ... on ScheduledOperation {
       remoteTypeName: __typename
       remoteId: id
+      stage
     }
   }
   remoteParent: parent {
     ... on Page {
       remoteTypeName: __typename
       remoteId: id
+      stage
     }
     ... on Post {
       remoteTypeName: __typename
       remoteId: id
+      stage
     }
   }
 }

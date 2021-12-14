@@ -11,24 +11,28 @@ fragment ScheduledOperation on ScheduledOperation {
     ... on User {
       remoteTypeName: __typename
       remoteId: id
+      stage
     }
   }
   updatedBy {
     ... on User {
       remoteTypeName: __typename
       remoteId: id
+      stage
     }
   }
   publishedBy {
     ... on User {
       remoteTypeName: __typename
       remoteId: id
+      stage
     }
   }
   release {
     ... on ScheduledRelease {
       remoteTypeName: __typename
       remoteId: id
+      stage
     }
   }
   status
@@ -37,26 +41,32 @@ fragment ScheduledOperation on ScheduledOperation {
       remoteTypeName: __typename
       remoteId: id
       locale
+      stage
     }
     ... on Author {
       remoteTypeName: __typename
       remoteId: id
+      stage
     }
     ... on New {
       remoteTypeName: __typename
       remoteId: id
+      stage
     }
     ... on Page {
       remoteTypeName: __typename
       remoteId: id
+      stage
     }
     ... on Post {
       remoteTypeName: __typename
       remoteId: id
+      stage
     }
     ... on Seo {
       remoteTypeName: __typename
       remoteId: id
+      stage
     }
   }
 }

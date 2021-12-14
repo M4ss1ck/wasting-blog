@@ -2,14 +2,14 @@ import React from "react";
 
 import Footer from "./footer";
 import Header from "./header";
-import SEO from "./seo";
+import Seo from "./seo";
 import ReadingProgress from "./readingProgress";
 
 function Layout({ children, barra, pageContext: { page } }) {
   const target = React.createRef();
   return (
     <React.Fragment>
-      <SEO {...page} />
+      <Seo {...page} />
       <div
         className="flex flex-col min-h-screen bg-gray-200 dark:text-white dark:bg-black"
         id="top"
