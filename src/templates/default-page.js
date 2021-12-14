@@ -14,7 +14,11 @@ function DefaultPageTemplate({ pageContext: { page } }) {
       </div>
       <div className="pb-16 lg:pb-20">
         <div className="prose dark:prose-dark max-w-none pt-10 pb-8">
-          <MDXRenderer>{page.content.markdownNode.childMdx.body}</MDXRenderer>
+          {page.content.markdownNode ? (
+            <MDXRenderer>{page.content.markdownNode.childMdx.body}</MDXRenderer>
+          ) : (
+            <p>Hubo algún error con el contenido</p>
+          )}
         </div>
       </div>
     </div>

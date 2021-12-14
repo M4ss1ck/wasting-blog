@@ -34,9 +34,11 @@ function BlogPostTemplate({
             <h1 className="text-3xl leading-9 font-extrabold text-gray-900 dark:text-gray-600 tracking-tight sm:text-4xl sm:leading-10 md:text-5xl md:leading-14">
               {page.title}
             </h1>
-            <p className="mt-2 text-base leading-6 text-gray-500 dark:text-gray-400">
-              {readTime(page.content.markdownNode.childMdx.body)} min
-            </p>
+            {page.content.markdownNode && (
+              <p className="mt-2 text-base leading-6 text-gray-500 dark:text-gray-400">
+                {readTime(page.content.markdownNode.childMdx.body)} min
+              </p>
+            )}
           </div>
         </div>
       </header>
@@ -83,7 +85,11 @@ function BlogPostTemplate({
             />
           )}
           <div className="prose dark:prose-dark max-w-none pt-10 pb-8">
-            <MDXRenderer>{page.content.markdownNode.childMdx.body}</MDXRenderer>
+            {page.content.markdownNode && (
+              <MDXRenderer>
+                {page.content.markdownNode.childMdx.body}
+              </MDXRenderer>
+            )}
           </div>
         </div>
         <aside className="text-sm font-medium leading-5 divide-y divide-gray-200 lg:col-start-1 lg:row-start-2">

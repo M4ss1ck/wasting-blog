@@ -1,1 +1,17 @@
-export { wrapPageElement, wrapRootElement } from "./gatsby-browser";
+//export { wrapPageElement, wrapRootElement } from "./gatsby-browser";
+
+import React from "react";
+import { MDXProvider } from "@mdx-js/react";
+
+import "./src/styles/index.css";
+import Layout from "./src/components/layout";
+
+const wrapPageElement = ({ element, props }) => (
+  <Layout {...props} barra>
+    {element}
+  </Layout>
+);
+
+const wrapRootElement = ({ element }) => <MDXProvider>{element}</MDXProvider>;
+
+export { wrapPageElement, wrapRootElement };
