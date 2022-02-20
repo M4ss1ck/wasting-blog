@@ -42,10 +42,14 @@ function BlogPage({ data: { allGraphCmsPost } }) {
                             {post.excerpt}
                           </div>
                         )}
-                        <p className="text-base leading-6 font-medium text-gray-500">
-                          {readTime(post.content.markdownNode.childMdx.body)}{" "}
-                          min de lectura
-                        </p>
+                        {post.content.markdownNode ? (
+                          <p className="text-base leading-6 font-medium text-gray-500">
+                            {readTime(post.content.markdownNode.childMdx.body)}{" "}
+                            min de lectura
+                          </p>
+                        ) : (
+                          <p>Hubo algún error con el contenido</p>
+                        )}
                       </div>
                       <div className="text-base leading-6 font-medium">
                         <Link

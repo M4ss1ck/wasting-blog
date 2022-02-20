@@ -9,7 +9,6 @@ module.exports = {
   plugins: [
     "gatsby-plugin-pnpm",
     "gatsby-plugin-dark-mode",
-    "gatsby-plugin-mdx",
     {
       resolve: "gatsby-plugin-react-svg",
       options: {
@@ -29,11 +28,14 @@ module.exports = {
         token: process.env.GRAPHCMS_TOKEN,
         buildMarkdownNodes: true,
         downloadLocalImages: true,
+        stages: ["DRAFT"],
+        fragmentsPath: "fragments",
       },
     },
     "gatsby-plugin-image",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
+    "gatsby-plugin-mdx",
     {
       resolve: `gatsby-source-filesystem`,
       options: {
