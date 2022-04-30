@@ -11,23 +11,23 @@ function Layout({ children, barra, pageContext: { page } }) {
     <React.Fragment>
       <Seo {...page} />
       <div
-        className="flex flex-col min-h-screen bg-gray-200 dark:text-white dark:bg-black"
+        className="flex flex-col min-h-screen bg-bgcolor text-textcolor"
         id="top"
       >
         <Header />
         {barra ? <ReadingProgress target={target} /> : null}
-        <div className="flex-grow max-w-3xl mx-auto px-4 sm:px-6 lg:max-w-5xl w-full">
+        <div className="flex-grow w-full max-w-3xl px-4 mx-auto sm:px-6 lg:max-w-5xl">
           <main className="flex-grow mb-8" ref={target}>
             {children}
           </main>
-          <div className="fixed bottom-6 right-1 md:right-5 ml-12 my-auto mr-0 z-50 group">
-            <a href="#top" className="flex-row flex">
-              <span className="hidden group-hover:inline-flex px-4 bg-white text-primario rounded-full border border-primario dark:bg-black dark:text-white">
+          <div className="fixed z-50 my-auto ml-12 mr-0 bottom-6 right-1 md:right-5 group">
+            <a href="#top" className="flex flex-row">
+              <span className="hidden px-4 border rounded-full group-hover:inline-flex bg-button text-buttontext border-hint">
                 Subir
               </span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 group-hover:hidden"
+                className="w-6 h-6 group-hover:hidden"
                 viewBox="0 0 20 20"
                 fill="#fff"
               >

@@ -52,16 +52,16 @@ function Header() {
   const image1 = getImage(logo1);
 
   return (
-    <header className="w-full py-0 px-4 sticky top-0 z-30 bg-gradient-to-r from-white via-transparent to-white dark:from-black dark:via-gray-800 dark:to-black dark:text-white">
-      <nav className="relative flex items-center flex-wrap justify-between sm:h-14 md:h-12 lg:justify-center">
+    <header className="sticky top-0 z-30 w-full px-4 py-0 bg-gradient-to-r from-white via-transparent to-white dark:from-black dark:via-gray-800 dark:to-black dark:text-white">
+      <nav className="relative flex flex-wrap items-center justify-between sm:h-14 md:h-12 lg:justify-center">
         <div className="flex items-center flex-grow flex-shrink-0 sm:h-14 md:h-12">
           <div className="flex items-center justify-between w-full">
             <div
-              className="h-full justify-center align-middle"
+              className="justify-center h-full align-middle"
               //style={{ height: "10vh" }}
             >
               <Link to="/" aria-label="Wasting Time Blog">
-                <div className="h-10 logoh hidden sm:inline-flex items-center">
+                <div className="items-center hidden h-10 logoh sm:inline-flex">
                   <GatsbyImage
                     image={image3}
                     alt="logo"
@@ -75,11 +75,11 @@ function Header() {
                     // }}
                   />
                 </div>
-                <div className="max-h-full inline-flex sm:hidden items-center">
+                <div className="inline-flex items-center max-h-full sm:hidden">
                   <GatsbyImage
                     image={image1}
                     alt="logo"
-                    className="h-10 w-10"
+                    className="w-10 h-10"
                     // style={{
                     //   maxHeight: "100%",
                     // }}
@@ -92,17 +92,17 @@ function Header() {
                 {/* <span className="text-lg">Wasting Time Blog</span> */}
               </Link>
             </div>
-            <div className="-mr-2 flex items-center md:hidden">
+            <div className="flex items-center -mr-2 md:hidden">
               <button
                 onClick={() => toggleMobileNavOpen()}
                 type="button"
-                className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
+                className="inline-flex items-center justify-center p-2 transition duration-150 ease-in-out rounded-md text-textcolor hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500"
                 id="main-menu"
                 aria-label="Main menu"
                 aria-haspopup="true"
               >
                 <svg
-                  className="h-6 w-6"
+                  className="w-6 h-6"
                   stroke="currentColor"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -119,7 +119,7 @@ function Header() {
           </div>
         </div>
 
-        <div className="hidden md:flex md:ml-10 md:pr-4 space-x-8">
+        <div className="hidden space-x-8 md:flex md:ml-10 md:pr-4">
           <Link
             to={`/blog`}
             className={cx(
@@ -157,8 +157,9 @@ function Header() {
         </div>
         <ThemeToggler>
           {({ theme, toggleTheme }) => (
-            <div className="dark-button mx-4">
+            <div className="mx-4 dark-button">
               <input
+                aria-label="Toggle dark mode"
                 type="checkbox"
                 id="toggle"
                 onChange={(e) =>
@@ -166,7 +167,6 @@ function Header() {
                 }
                 checked={theme === "dark"}
               />
-              <label for="toggle" htmlFor="toggle"></label>
             </div>
           )}
         </ThemeToggler>
@@ -180,15 +180,15 @@ function Header() {
         leaveFrom="opacity-100 scale-100"
         leaveTo="opacity-0 scale-95"
       >
-        <div className="absolute top-0 inset-x-0 py-2 -mx-2 transition transform origin-top-right md:hidden z-50 md:z-10">
+        <div className="absolute inset-x-0 top-0 z-50 py-2 -mx-2 transition origin-top-right transform md:hidden md:z-10">
           <div className="rounded-lg shadow-md">
             <div
-              className="rounded-lg bg-white dark:bg-black shadow-xs overflow-hidden"
+              className="overflow-hidden bg-white rounded-lg shadow-xs dark:bg-black"
               role="menu"
               aria-orientation="vertical"
               aria-labelledby="main-menu"
             >
-              <div className="px-2 pt-8 flex items-center justify-between">
+              <div className="flex items-center justify-between px-2 pt-8">
                 <div className="w-custom">
                   <Link to="/">
                     <GatsbyImage
@@ -209,11 +209,11 @@ function Header() {
                   <button
                     onClick={() => toggleMobileNavOpen()}
                     type="button"
-                    className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
+                    className="inline-flex items-center justify-center p-2 text-gray-400 transition duration-150 ease-in-out rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500"
                     aria-label="Close menu"
                   >
                     <svg
-                      className="h-6 w-6"
+                      className="w-6 h-6"
                       stroke="currentColor"
                       fill="none"
                       viewBox="0 0 24 24"
@@ -228,8 +228,8 @@ function Header() {
                   </button>
                 </div>
               </div>
-              <div className="mt-1 px-2 pt-2 pb-3 space-y-1">
-                <Link
+              <div className="px-2 pt-2 pb-3 mt-1 space-y-1">
+                {/* <Link
                   to={`/noticias`}
                   className={cx(
                     "block pl-3 pr-4 py-2 border-l-4 font-medium focus:outline-none transition duration-150 ease-in-out",
@@ -243,7 +243,7 @@ function Header() {
                   role="menuitem"
                 >
                   Noticias
-                </Link>
+                </Link> */}
                 <Link
                   to={`/blog`}
                   className={cx(

@@ -25,17 +25,17 @@ function BlogPostTemplate({
           <dl className="space-y-10">
             <div>
               <dt className="sr-only">Publicado</dt>
-              <dd className="text-base font-medium leading-6 text-gray-500">
+              <dd className="text-base font-medium leading-6 text-textcolor bg-bgcolor">
                 <time dateTime={page.date}>{page.date}</time>
               </dd>
             </div>
           </dl>
           <div>
-            <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-600 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14">
+            <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-textcolor sm:text-4xl sm:leading-10 md:text-5xl md:leading-14">
               {page.title}
             </h1>
             {page.content.markdownNode && (
-              <p className="mt-2 text-base leading-6 text-gray-500 dark:text-gray-400">
+              <p className="mt-2 text-base leading-6 text-textcolor bg-bgcolor">
                 {readTime(page.content.markdownNode.childMdx.body)} min
               </p>
             )}
@@ -100,7 +100,7 @@ function BlogPostTemplate({
                   <h2 className="text-xs tracking-wide text-gray-500 uppercase">
                     Siguiente
                   </h2>
-                  <div className="text-purple-400 hover:text-purple-700">
+                  <div className="text-link hover:text-purple-700">
                     <Link to={`/posts/${nextPost.slug}`}>{nextPost.title}</Link>
                   </div>
                 </div>
@@ -110,7 +110,7 @@ function BlogPostTemplate({
                   <h2 className="text-xs tracking-wide text-gray-500 uppercase">
                     Anterior
                   </h2>
-                  <div className="text-purple-400 hover:text-purple-700">
+                  <div className="text-link hover:text-purple-700">
                     <Link to={`/posts/${previousPost.slug}`}>
                       {previousPost.title}
                     </Link>
@@ -120,7 +120,7 @@ function BlogPostTemplate({
             </div>
           )}
           <div className="pt-8">
-            <Link to="/" className="text-purple-400 hover:text-purple-700">
+            <Link to="/" className="text-link hover:text-purple-700">
               &larr; Regresar{" "}
               <span style={{ textDecoration: "line-through" }}>al futuro</span>{" "}
               a la página principal
