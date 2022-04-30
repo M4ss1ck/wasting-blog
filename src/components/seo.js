@@ -47,6 +47,8 @@ function SEO({ title, seo }) {
       {seo?.image && <meta name="twitter:image:src" content={seo.image.url} />}
 
       <link rel="icon" href={favicon} />
+
+      <script src="https://telegram.org/js/telegram-web-app.js"></script>
     </Helmet>
   );
 }
