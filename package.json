@@ -6,7 +6,7 @@
   "scripts": {
     "build": "gatsby build",
     "clean": "gatsby clean",
-    "dev": "gatsby develop -o",
+    "dev": "gatsby develop -H 0.0.0.0 -o",
     "serve": "gatsby serve -o",
     "show": "gatsby clean && gatsby build && gatsby serve -o",
     "inf": "gatsby info"
