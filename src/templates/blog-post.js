@@ -25,13 +25,13 @@ function BlogPostTemplate({
           <dl className="space-y-10">
             <div>
               <dt className="sr-only">Publicado</dt>
-              <dd className="text-base leading-6 font-medium text-gray-500">
+              <dd className="text-base font-medium leading-6 text-gray-500">
                 <time dateTime={page.date}>{page.date}</time>
               </dd>
             </div>
           </dl>
           <div>
-            <h1 className="text-3xl leading-9 font-extrabold text-gray-900 dark:text-gray-600 tracking-tight sm:text-4xl sm:leading-10 md:text-5xl md:leading-14">
+            <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-600 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14">
               {page.title}
             </h1>
             {page.content.markdownNode && (
@@ -43,13 +43,13 @@ function BlogPostTemplate({
         </div>
       </header>
       <div
-        className="divide-y lg:divide-y-0 divide-gray-200 lg:grid lg:grid-cols-4 lg:col-gap-6 pb-16 lg:pb-20"
+        className="pb-16 divide-y divide-gray-200 lg:divide-y-0 lg:grid lg:grid-cols-4 lg:col-gap-6 lg:pb-20"
         style={{ gridTemplateRows: "auto 1fr" }}
       >
         <dl className="pt-6 pb-10 lg:pt-11 lg:border-b lg:border-gray-200">
           <dt className="sr-only">Autor</dt>
           <dd>
-            <ul className="flex justify-center lg:block space-x-8 sm:space-x-12 lg:space-x-0 lg:space-y-8">
+            <ul className="flex justify-center space-x-8 lg:block sm:space-x-12 lg:space-x-0 lg:space-y-8">
               <li className="flex space-x-2">
                 {authorImage && (
                   <GatsbyImage
@@ -75,7 +75,7 @@ function BlogPostTemplate({
             </ul>
           </dd>
         </dl>
-        <div className="divide-y divide-gray-200 lg:pb-0 lg:col-span-3 lg:row-span-2 mx-4">
+        <div className="mx-4 divide-y divide-gray-200 lg:pb-0 lg:col-span-3 lg:row-span-2">
           {coverImage && (
             <GatsbyImage
               image={portada}
@@ -84,7 +84,7 @@ function BlogPostTemplate({
               alt="Imagen de portada"
             />
           )}
-          <div className="prose dark:prose-dark max-w-none pt-10 pb-8">
+          <div className="pt-10 pb-8 prose dark:prose-dark max-w-none">
             {page.content.markdownNode && (
               <MDXRenderer>
                 {page.content.markdownNode.childMdx.body}
@@ -94,10 +94,10 @@ function BlogPostTemplate({
         </div>
         <aside className="text-sm font-medium leading-5 divide-y divide-gray-200 lg:col-start-1 lg:row-start-2">
           {(nextPost || previousPost) && (
-            <div className="space-y-8 py-8">
+            <div className="py-8 space-y-8">
               {nextPost && (
                 <div>
-                  <h2 className="text-xs tracking-wide uppercase text-gray-500">
+                  <h2 className="text-xs tracking-wide text-gray-500 uppercase">
                     Siguiente
                   </h2>
                   <div className="text-purple-400 hover:text-purple-700">
@@ -107,7 +107,7 @@ function BlogPostTemplate({
               )}
               {previousPost && (
                 <div>
-                  <h2 className="text-xs tracking-wide uppercase text-gray-500">
+                  <h2 className="text-xs tracking-wide text-gray-500 uppercase">
                     Anterior
                   </h2>
                   <div className="text-purple-400 hover:text-purple-700">
