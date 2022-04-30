@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  --tg-color-scheme:  "dark";/*  light or dark */
+  --tg-theme-bg-color: rgb(0, 0, 0);
+  --tg-theme-text-color: rgb(255, 255, 255);
+  --tg-theme-hint-color: rgb(192, 132, 252);
+  --tg-theme-link-color: rgb(168 85 247);
+  --tg-theme-button-color: rgb(168 85 247);
+  --tg-theme-button-text-color: rgb(255, 255, 255);
+}
+
 .w-custom {
   min-width: 50%;
   height: 100%;
